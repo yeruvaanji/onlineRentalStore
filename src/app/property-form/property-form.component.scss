@@ -1,0 +1,9 @@
+.property-form {
+    margin: 15px;
+    display: flex;
+    align-content: space-around;
+    justify-content: space-between;
+    /* flex-direction: column; */
+    flex-wrap: wrap;
+    gap: 15px;
+}

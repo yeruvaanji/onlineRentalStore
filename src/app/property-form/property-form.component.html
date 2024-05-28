@@ -1,0 +1,76 @@
+<!-- <div class="property-form-container">
+  <h1 mat-dialog-title>{{ data.property ? 'Edit Property' : 'Add Property' }}</h1>
+  <form [formGroup]="propertyForm" (ngSubmit)="onSubmit()">
+    <h2 class="text-center">Add Property</h2>
+    <div class="form-group">
+      <label for="place">Property Type</label>
+      <input type="text" id="place" formControlName="proprtyType" />
+    </div>
+    <div class="form-group">
+      <label for="area">Area (sq.ft)</label>
+      <input type="number" id="area" formControlName="area" />
+    </div>
+      <div class="form-group">
+      <label for="location">Location</label>
+      <input type="string" id="location" formControlName="location" />
+    </div>
+    <div class="form-group">
+      <label for="bedrooms">Bedrooms</label>
+      <input type="number" id="bedrooms" formControlName="bedrooms" />
+    </div>
+    <div class="form-group">
+      <label for="bathrooms">Bathrooms</label>
+      <input type="number" id="bathrooms" formControlName="bathrooms" />
+    </div>
+    <div class="form-group">
+      <label for="hospitals">Nearby Hospitals</label>
+      <input type="number" id="hospitals" formControlName="hospitalsNearByKM" />
+    </div>
+    <div class="form-group">
+      <label for="colleges">Nearby Colleges</label>
+      <input type="number" id="colleges" formControlName="collegesNearByKM" />
+    </div>
+    <button type="submit" [disabled]="!propertyForm.valid">Add Property</button>
+  </form>
+</div> -->
+<h1 mat-dialog-title>{{ data ? 'Edit Property' : 'Add Property' }}</h1>
+<div mat-dialog-content>
+  <form [formGroup]="propertyForm" class="property-form">
+    <mat-form-field appearance="fill">
+      <mat-label>Property Type</mat-label>
+      <input matInput formControlName="proprtyType" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Area</mat-label>
+      <input matInput formControlName="area" required>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Location</mat-label>
+      <input matInput formControlName="location" required>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Bedrooms</mat-label>
+      <input matInput formControlName="bedrooms" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Bathrooms</mat-label>
+      <input matInput formControlName="bathrooms" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Nearby Hospitals</mat-label>
+      <input matInput formControlName="hospitalsNearByKM">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Nearby Colleges</mat-label>
+      <input matInput formControlName="collegesNearByKM">
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions style="justify-content: flex-end;">
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-button (click)="onSubmit()" cdkFocusInitial style="background-color:red" >{{ data ? 'Update Property' : 'Add Property' }}</button>
+</div>

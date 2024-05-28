@@ -1,0 +1,74 @@
+<app-header></app-header>
+<div *ngIf="usertype=='Seller'" >
+<button mat-raised-button color="primary" style="float:right;margin:15px 40px 35px 0px; padding:5px;" (click)="createNewProperty()">
+    Add New Property
+</button>
+<div class="container">
+<!-- <h4 class="text-center" color="secondary">List of properties</h4> -->
+<table mat-table [dataSource]="properties" class="mat-elevation-z8">
+
+  <!-- Place Column -->
+  <ng-container matColumnDef="place">
+    <th mat-header-cell *matHeaderCellDef> Property Type </th>
+    <td mat-cell *matCellDef="let property"> {{property.proprtyType}} </td>
+  </ng-container>
+
+  <!-- Area Column -->
+  <ng-container matColumnDef="area">
+    <th mat-header-cell *matHeaderCellDef> Area </th>
+    <td mat-cell *matCellDef="let property"> {{property.area}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="location">
+    <th mat-header-cell *matHeaderCellDef> Location </th>
+    <td mat-cell *matCellDef="let property"> {{property.location}} </td>
+  </ng-container>
+  <!-- Bedrooms Column -->
+  <ng-container matColumnDef="bedrooms">
+    <th mat-header-cell *matHeaderCellDef> Bedrooms </th>
+    <td mat-cell *matCellDef="let property"> {{property.bedrooms}} </td>
+  </ng-container>
+
+  <!-- Bathrooms Column -->
+  <ng-container matColumnDef="bathrooms">
+    <th mat-header-cell *matHeaderCellDef> Bathrooms </th>
+    <td mat-cell *matCellDef="let property"> {{property.bathrooms}} </td>
+  </ng-container>
+
+  <!-- Hospitals Column -->
+  <ng-container matColumnDef="hospitals">
+    <th mat-header-cell *matHeaderCellDef> Nearby Hospitals </th>
+    <td mat-cell *matCellDef="let property"> {{property.hospitalsNearByKM}} </td>
+  </ng-container>
+
+  <!-- Colleges Column -->
+  <ng-container matColumnDef="colleges">
+    <th mat-header-cell *matHeaderCellDef> Nearby Colleges </th>
+    <td mat-cell *matCellDef="let property"> {{property.collegesNearByKM}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="likes">
+    <th mat-header-cell *matHeaderCellDef> Likes Count </th>
+    <td mat-cell *matCellDef="let property"> {{property?.likes>0?property?.likes:0}} </td>
+  </ng-container>
+  <!-- Edit/Delete Column -->
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef> Actions </th>
+    <td mat-cell *matCellDef="let property">
+      <button mat-button (click)="editProperty(property)">
+        <mat-icon class="pr-1" color="suceess">edit</mat-icon>
+       Edit</button>
+      <button mat-button (click)="deleteProperty(property._id)">
+                <mat-icon class="pr-1" color="warn">delete</mat-icon>
+            Delete</button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+</div>
+</div>
+<div *ngIf="usertype=='Buyer'" >
+  <app-property-detail></app-property-detail>
+</div>

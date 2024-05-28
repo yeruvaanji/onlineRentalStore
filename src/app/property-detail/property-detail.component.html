@@ -1,0 +1,74 @@
+
+<div class="filter-form">
+  <form [formGroup]="filterForm" (ngSubmit)="applyFilters()" class="property-form">
+    <mat-form-field>
+      <mat-label>propertyType</mat-label>
+      <input matInput formControlName="proprtyType">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Area</mat-label>
+      <input matInput formControlName="area">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Location</mat-label>
+      <input matInput formControlName="location">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Bedrooms</mat-label>
+      <input matInput formControlName="bedrooms">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Bathrooms</mat-label>
+      <input matInput formControlName="bathrooms">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Nearby Hospitals</mat-label>
+      <input matInput formControlName="hospitalsNearByKM">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Nearby Colleges</mat-label>
+      <input matInput formControlName="collegesNearByKM">
+    </mat-form-field>
+    <button mat-raised-button type="submit" style="text-align: center;background:burlywood">Apply Filters</button>
+  </form>
+</div>
+<h3 class="p-2" style="background: gray;color:white;">Property details</h3>
+<div class="property-list">
+  <div *ngFor="let property of filteredProperties" class="property-card">
+     <div class="d-flex">
+      <mat-label class="label">PropertyType: </mat-label>
+      <p>{{ property.proprtyType }}</p>
+    </div>
+    <div class="d-flex">
+      <mat-label class="label">Area:</mat-label>
+      <p>{{ property.area }}</p>
+    </div>
+    <div class="d-flex">
+      <mat-label class="label">Location: </mat-label>
+      <p>{{ property.location }}</p>
+    </div>
+    <div class="d-flex">
+      <mat-label class="label">Bedrooms: </mat-label>
+      <p>{{ property.bedrooms }}</p>
+    </div>
+    <div class="d-flex">
+      <mat-label class="label">Bathrooms: </mat-label>
+      <p>{{ property.bathrooms }}</p>
+    </div>
+    <div class="d-flex">
+      <mat-label class="label">Nearby Hospitals: </mat-label>
+      <p>{{ property.hospitalsNearByKM }}</p>
+    </div>
+    <div class="d-flex">
+      <mat-label class="label">Nearby Colleges: </mat-label>
+      <p>{{ property.collegesNearByKM }}</p>
+    </div>
+      <button mat-icon-button (click)="onLike(property)">
+        <mat-icon>thumb_up</mat-icon>       {{ property.likes || 0 }}
+      </button>
+
+    <button mat-raised-button color="primary" (click)="showInterest(property)">I'm Interested</button>
+  </div>
+</div>
+<mat-paginator [length]="filteredProperties.length" [pageSize]="10" showFirstLastButtons></mat-paginator>
+

@@ -1,0 +1,14 @@
+<!-- header.component.html -->
+
+<nav class="navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">Online Property Rental Store</a>
+    <div class="navbar-links">
+      <div *ngIf="userName">
+        <span (click)="toggleLogout()" class="username">{{ userName }}</span>
+        <a *ngIf="showLogout" (click)="logout()" class="logout-button">Logout</a>
+      </div>
+      <a *ngIf="!userName" routerLink="/login" class="login-button">Login</a>
+    </div>
+  </div>
+</nav>
